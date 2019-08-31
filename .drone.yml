@@ -1,0 +1,17 @@
+kind: pipeline 
+name: Kernel Builder (NeonGang)
+ 
+steps: 
+- name: build
+  image: ubuntu:rolling
+  environment:
+    DEFCONFIG:
+      from_secret: DEFCONFIG
+    LINK:
+      from_secret: LINK
+    TG_API:
+      from_secret: TG_API
+    TG_CHAT:
+      from_secret: TG_CHAT
+  commands:
+  - bash ./runner.sh
