@@ -67,7 +67,7 @@ curl --progress-bar -F document=@"$1" $BOT_BUILD_URL \
 function upload {
 mv $KERNEL_DIR/out/arch/arm64/boot/Image.gz-dtb AnyKernel2/Image.gz-dtb
 cd AnyKernel2
-zip -r9 $ZIPNAME-wayne-$DATE * -x .git README.md
+zip -r9 $ZIPNAME-wayne * -x .git README.md
 tg_post_build $ZIPNAME* "$(cat /tmp/TG_CHAT)" "Build took : $((DIFF / 60)) minute(s) and $((DIFF % 60)) second(s)"
 echo "Build done"
 }
