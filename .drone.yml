@@ -15,5 +15,7 @@ steps:
       from_secret: TG_CHAT
     BRANCH:
       from_secret: BRANCH
+    DEVICE
+      from_secret: DEVICE
   commands:
   - bash ./runner.sh
