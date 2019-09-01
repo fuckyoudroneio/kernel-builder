@@ -5,6 +5,7 @@ echo $TG_API > /tmp/TG_API
 echo $TG_CHAT > /tmp/TG_CHAT
 echo $DEFCONFIG > /tmp/DEFCONFIG
 echo $LINK > /tmp/LINK
+echo $BRANCH > /tmp/BRANCH
 export TZ=Europe/Moscow
 echo `pwd` > /tmp/loc
 sudo echo "ci ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
@@ -12,7 +13,7 @@ useradd -m -d /home/ci ci
 useradd -g ci wheel
 echo `pwd` > /tmp/loc
 apt-get install git bc ccache automake lzop bison gperf build-essential zip curl zlib1g-dev g++-multilib python-networkx libxml2-utils bzip2 libbz2-dev libbz2-1.0 sudo libghc-bzlib-dev squashfs-tools pngcrush schedtool dpkg-dev liblz4-tool make optipng libssl-dev -y
-git clone $(cat /tmp/LINK) kernel
+git clone $(cat /tmp/LINK) -b $(cat /tmp/BRANCH) kernel
 cd kernel
 git clone --progress -j32 --depth 5 --no-single-branch https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9.git
 git clone --progress -j32 --depth 5 --no-single-branch https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9
