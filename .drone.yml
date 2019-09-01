@@ -13,5 +13,7 @@ steps:
       from_secret: TG_API
     TG_CHAT:
       from_secret: TG_CHAT
+    BRANCH:
+      from_secret: BRANCH
   commands:
   - bash ./runner.sh
