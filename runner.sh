@@ -69,12 +69,12 @@ curl --progress-bar -F document=@"$1" $BOT_BUILD_URL \
 function upload {
 mv $KERNEL_DIR/out/arch/arm64/boot/Image.gz-dtb AnyKernel2/Image.gz-dtb
 cd AnyKernel2
-zip -r9 $ZIPNAME-$(cat /tmp/device) * -x .git README.md
+zip -r9 $ZIPNAME-$(cat /tmp/DEVICE) * -x .git README.md
 tg_post_build $ZIPNAME* "$(cat /tmp/TG_CHAT)" "Build took : $((DIFF / 60)) minute(s) and $((DIFF % 60)) second(s)"
 echo "Build for $(cat /tmp/DEVICE) done"
 }
 #-------------------------------------------#
-tg_post_msg "Starting kernel build for <b>$(cat /tmp/device)" "$(cat /tmp/TG_CHAT)"
+tg_post_msg "Starting kernel build for <b>$(cat /tmp/DEVICE</b>" "$(cat /tmp/TG_CHAT)"
 BUILD_START=$(date +"%s")
 make O=out $(cat /tmp/DEFCONFIG)
 make -j8 O=out \
