@@ -74,7 +74,7 @@ tg_post_build $ZIPNAME* "$(cat /tmp/TG_CHAT)" "Build took : $((DIFF / 60)) minut
 echo "Build for $(cat /tmp/DEVICE) done"
 }
 #-------------------------------------------#
-tg_post_msg "Starting kernel build for <b>$(cat /tmp/DEVICE</b>" "$(cat /tmp/TG_CHAT)"
+tg_post_msg "Starting kernel build for <b>$(cat /tmp/DEVICE)</b>" "$(cat /tmp/TG_CHAT)"
 BUILD_START=$(date +"%s")
 make O=out $(cat /tmp/DEFCONFIG)
 make -j8 O=out \
