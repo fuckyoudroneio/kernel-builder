@@ -45,7 +45,7 @@ function check {
          upload
        else
          ls
-         tg_post_msg "Build failed (drone.ci)" "$(cat /tmp/TG_CHAT)"
+         tg_post_build error.log "$(cat /tmp/TG_CHAT)" "Build failed (@rebenok90x)"
         fi 
 }
 #------------------------------------------#
@@ -72,14 +72,14 @@ tg_post_build $ZIPNAME* "$(cat /tmp/TG_CHAT)" "Build took : $((DIFF / 60)) minut
 echo "Build done"
 }
 #-------------------------------------------#
-tg_post_msg "Starting build kernel with drone.ci" "$(cat /tmp/TG_CHAT)"
+tg_post_msg "Starting kernel build" "$(cat /tmp/TG_CHAT)"
 BUILD_START=$(date +"%s")
 make O=out $(cat /tmp/DEFCONFIG)
 make -j8 O=out \
 CROSS_COMPILE=$KERNEL_DIR/aarch64-linux-android-4.9/bin/aarch64-linux-android- 2>&1 | tee error.log \
 CROSS_COMPILE_ARM32=$KERNEL_DIR/arm-linux-androideabi-4.9/bin/arm-linux-androideabi- \
 CC=$KERNEL_DIR/clang-llvm/bin/clang \
-CLANG_TRIPLE=aarch64-linux-gnu-
+CLANG_TRIPLE=aarch64-linux-gnu- 2>&1| tee error.log
 #------#
 BUILD_END=$(date +"%s")
 DIFF=$((BUILD_END - BUILD_START))
