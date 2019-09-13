@@ -26,7 +26,7 @@ cd $KERNEL_DIR/arm-linux-androideabi-4.9
 git reset --hard 42e5864a7d23921858ca8541d52028ff88acb2b6
 cd $KERNEL_DIR
 git clone --depth 1 --no-single-branch https://github.com/rebenok90x/AnyKernel2.git
-export ZIPNAME="NeonKernel"
+export ZIPNAME="NeonKernel-SAR"
 export KBUILD_BUILD_USER="ctwoon"
 export KBUILD_BUILD_HOST="neongang"
 export ARCH=arm64
